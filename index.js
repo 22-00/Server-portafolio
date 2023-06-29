@@ -3,9 +3,9 @@ const express = require("express")
 const cors = require("cors")
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser")
-const { NM_PASSWORD, NM_EMAIL } = process.env;
+const { NM_PASSWORD, NM_EMAIL, PORT } = process.env;
 
-const PORT = 3001
+const port = PORT || 3001
 
 const app = express()
 app.use(cors())
@@ -59,6 +59,6 @@ app.post("/contact",bodyParser.urlencoded({ extended: true}), (req, res) => {
     })
 })
 
-app.listen(PORT, ()=> {
-    console.log(`Servidor andando en el puerto ${PORT}`)
+app.listen(port, ()=> {
+    console.log(`Servidor andando en el puerto ${port}`)
 })
